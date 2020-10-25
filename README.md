@@ -2,7 +2,7 @@
 ⚛️ 🖨️ A hierarchy sensitive, middleware-defined `console.log` for [**React**](https://reactjs.org) and [**React Native**](https://reactnative.dev). ✨
 
 ### Table of Contents
-  - 1.0 [Getting Started](#Getting Started)
+  - [1.0 Getting Started](#-getting-started)
   - 2.0 Usage
     - 2.1 Basic Example
     - 2.2 Middleware
