@@ -159,7 +159,7 @@ export default () => (
 );
 ```
 
-#### Strict Mode
+#### 💢 Strict Mode
 
 By default, `LogsProvider`s operate in **Strict Mode**. This has the following effect:
   - A `disabled` `LogsProvider` will disable logging for **all** children in the tree.
