@@ -25,6 +25,7 @@ export type LogLevelContextProps = {
   readonly middleware: LogsMiddleware[];
   readonly disabled: boolean;
   readonly parentId: string | null;
+  readonly strict: boolean;
 };
 
 export const defaultContext = Object.freeze({
@@ -33,6 +34,7 @@ export const defaultContext = Object.freeze({
   middleware: defaultMiddleware,
   disabled: false,
   parentId: null,
+  strict: true,
 }) as LogLevelContextProps;
 
 export default createContext(defaultContext);

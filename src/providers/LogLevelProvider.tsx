@@ -13,6 +13,7 @@ export type LogLevelProviderProps = {
   levels: string[] | undefined;
   level: string | undefined;
   middleware: LogsMiddleware[] | undefined;
+  strict: boolean;
 };
 
 // TODO: Move this to context.
@@ -26,12 +27,13 @@ const supportedProps = Object.freeze([
 // TODO: Proper of level.
 function LogLevelProvider({
   children,
+  strict: maybeStrict,
   ...extras
 }: LogLevelProviderProps): JSX.Element {
   const [id] = useState(nanoid);
   const { middleware: maybeMiddleware, levels: maybeLevels } = extras;
   const context = useLogLevelContext();
-  const { disabled: parentIsDisabled, level: parentLevel } = context;
+  const { disabled: parentIsDisabled, level: parentLevel, strict: parentIsStrict } = context;
   const value = deepmerge(
     context,
     Object.fromEntries(
@@ -52,9 +54,15 @@ function LogLevelProvider({
     (e, i, orig) => orig.indexOf(e) === i
   ) as string[];
   const isTopLevel = parentId === null;
+
+  const strict = maybeStrict !== undefined ? !!maybeStrict : parentIsStrict;
   const levels = isTopLevel && Array.isArray(maybeLevels) ? maybeLevels : inheritedLevels;
-  if (!!maybeLevel && levels.indexOf(maybeLevel) < 0) {
-    throw new Error(`react-use-logs: Encountered unexpected level, "${maybeLevel}". Expected one of ${levels.join(',')}.`);
+  const selectedLevel = levels.indexOf(maybeLevel) < 0 ? levels[0] : maybeLevel;
+
+  if (selectedLevel !== maybeLevel) {
+    loglevel.error(
+      `react-use-logs: Encountered "${maybeLevel}", expected one of ${levels.join(',')}. Falling back to ${selectedLevel}.`
+    );
   }
   const level = levels.indexOf(parentLevel) > levels.indexOf(maybeLevel) ? parentLevel : maybeLevel;
   return (
@@ -68,8 +76,9 @@ function LogLevelProvider({
           isTopLevel && Array.isArray(maybeMiddleware)
             ? maybeMiddleware
             : middleware,
-        disabled: parentIsDisabled || maybeDisabled,
-        level,
+        disabled: !strict ? maybeDisabled : (parentIsDisabled || maybeDisabled),
+        level: !strict ? maybeLevel : level,
+        strict,
       }}
     >
       {children}
@@ -82,6 +91,7 @@ LogLevelProvider.propTypes = {
   level: PropTypes.string,
   middleware: PropTypes.arrayOf(PropTypes.func),
   disabled: PropTypes.bool,
+  strict: PropTypes.bool,
 };
 
 LogLevelProvider.defaultProps = {
@@ -89,6 +99,7 @@ LogLevelProvider.defaultProps = {
   level: undefined,
   middleware: undefined,
   disabled: undefined,
+  strict: undefined,
 };
 
 export default LogLevelProvider;

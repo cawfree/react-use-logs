@@ -75,7 +75,7 @@ export default function App() {
         <View style={styles.levels}>
           <Text style={styles.title}>Disabled state inheritance:</Text>
           <Logs disabled>
-            <Logs>
+            <Logs disabled={false}>
               <Levels />
             </Logs>
           </Logs>
@@ -83,6 +83,22 @@ export default function App() {
         <View style={styles.levels}>
           <Text style={styles.title}>Level inheritance:</Text>
           <Logs level="warn">
+            <Logs level="trace">
+              <Levels />
+            </Logs>
+          </Logs>
+        </View>
+        <View style={styles.levels}>
+          <Text style={styles.title}>Disabled state inheritance (non-strict):</Text>
+          <Logs disabled strict={false}>
+            <Logs disabled={false}>
+              <Levels />
+            </Logs>
+          </Logs>
+        </View>
+        <View style={styles.levels}>
+          <Text style={styles.title}>Level inheritance:</Text>
+          <Logs level="warn" strict={false}>
             <Logs level="trace">
               <Levels />
             </Logs>

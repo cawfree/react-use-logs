@@ -159,5 +159,7 @@ export default () => (
 );
 ```
 
+> **Note:** Sometimes it _is_ useful to receive logs from a particular child of silent JSX tree. To disable inheritence of filtering props, you can pass a `strict={false}` to a `LogsProvider` to disable this behavior for all child nodes. This will permit all child components to _override_ the configuration of their parents. The `strict` prop is **enabled** by default, and it is not recommended you disable it in production.
+
 ## ✌️ License
 [**MIT**](./LICENSE)
