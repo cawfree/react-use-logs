@@ -17,7 +17,7 @@ Using [**Yarn**](https://yarnpkg.com):
 yarn add react-use-logs
 ```
 
-## ✏️ 2.0 Usage
+## ✏️ Usage
 
 ### 👶 2.1 Basic Example
 By default, `react-use-logs` exports a [`useLogs()`](./src/hooks/useLogs.ts) [**hook**](https://reactjs.org/docs/hooks-intro.html), which works pretty much just like your standard `window.console` object:
