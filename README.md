@@ -161,30 +161,11 @@ export default () => (
 
 #### Strict Mode
 
-By default, `LogsProvider`s operate in **Strict Mode**. This means the following:
+By default, `LogsProvider`s operate in **Strict Mode**. This has the following effect:
   - A `disabled` `LogsProvider` will disable logging for **all** children in the tree.
-  - The selected `level` of the `LogsProvider` will serve as the minimum log level for children.
+  - The selected `level` of the `LogsProvider` will serve as the minimum log level for nested children.
 
-However, this is _not_ useful for debugging, because sometimes it is _useful_ to temporarily activate logging for select portion of a silenced log tree. To enable nested `LogProvider`s to override a parent's configuration, you can disable strict mode by passing a `strict={false}` prop.
-
-To demonstrate this functionality, see the following example. In the pane below, we see the normal behaviour:
-
-```javascript
-<>
-  <Logs disabled>
-    {/* because the parent is disabled, the provider cannot disable logging */}
-    <Logs disabled={false}>
-    </Logs>
-  </Logs>
-  <Logs level="warn">
-    {/* because the parent's minimum log level is higher, the provider cannot log lower-level messages */}
-    <Logs level="trace">
-    </Logs>
-  </Logs>
-</>
-```
-
-However, we can enable child trees to override parent behaviour by deactivating strict mode:
+Although deterministic, this is not useful for debugging. This is because it is sometimes useful to temporarily activate logging for select portion of a silenced log tree. To enable nested `LogProvider`s to ignore a parent's configuration, you can disable strict mode by passing a `strict={false}` prop:
 
 ```javascript
 <>
@@ -193,7 +174,7 @@ However, we can enable child trees to override parent behaviour by deactivating 
     <Logs disabled={false}>
     </Logs>
   </Logs>
-  <Logs level="warn">
+  <Logs level="warn" strict={false}>
     {/* because the parent is not strict, we can log more granular information */}
     <Logs level="trace">
     </Logs>
