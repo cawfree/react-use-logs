@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-import Logs, { useLogs, useLogLevelContext } from './lib';
+import Logs, { useLogs, useLogLevelContext } from 'react-use-logs';
 
 function Levels() {
   const logs = useLogs();
