@@ -9,7 +9,7 @@
   - 🦄 Declare custom log types.
   - 👪 Supports JSX-scoped filtering and functionality.
 
-## 🚀 1.0 Getting Started
+## 🚀 Getting Started
 
 Using [**Yarn**](https://yarnpkg.com):
 
@@ -185,5 +185,5 @@ Although deterministic, this is not useful for debugging. This is because it is 
 </>
 ```
 
-## ✌️ 3.0 License
+## ✌️ License
 [**MIT**](./LICENSE)
