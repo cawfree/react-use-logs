@@ -1,12 +1,15 @@
 # react-use-logs
 ⚛️ 🖨️ A hierarchy sensitive, middleware-defined `console.log` for [**React**](https://reactjs.org) and [**React Native**](https://reactnative.dev). ✨
 
+### Table of Contents
+
+
 ### 🔥 Features
   - 🔋 Batteries included.
   - 🦄 Declare custom log types.
   - 👪 Supports JSX-scoped filtering and functionality.
 
-## 🚀 Getting Started
+## 🚀 1.0 Getting Started
 
 Using [**Yarn**](https://yarnpkg.com):
 
@@ -14,9 +17,9 @@ Using [**Yarn**](https://yarnpkg.com):
 yarn add react-use-logs
 ```
 
-## ✏️ Usage
+## ✏️ 2.0 Usage
 
-### 👶 Basic Example
+### 👶 2.1 Basic Example
 By default, `react-use-logs` exports a [`useLogs()`](./src/hooks/useLogs.ts) [**hook**](https://reactjs.org/docs/hooks-intro.html), which works pretty much just like your standard `window.console` object:
 
 ```javascript
@@ -28,7 +31,7 @@ export default () => {
 };
 ```
 
-### 🏹 Middleware
+### 🏹 2.2 Middleware
 It's possible to define custom handlers for particular calls to `useLogs()`. First, wrap your application in a [`<LogsProvider />`](./src/providers/LogLevelProvider):
 
 ```javascript
@@ -71,7 +74,7 @@ At this point any call to `logs.debug`, for example, will instead get passed thr
 
 > **Notice**: By default, a `LogsProvider` will use the default builtin logging mechanism, the `LogLevel` middleware. This is based on [`loglevel`](https://github.com/pimterry/loglevel). However, if you override the `middleware` prop for a root-level `LogsProvider`, this will _not_ be included by default. You can reintroduce the standard console behaviour by including the `LogLevel` middleware exported by the library.
 
-#### 👪 Nested Middleware
+#### 👪 2.2.1 Nested Middleware
 
 It's also possible to declare specific middleware for different parts of the DOM tree. This is achieved by nesting a child `LogsProvider`, and declaring an additional `middleware` prop. The middleware supplied here will be _appended_ to the global middleware.
 
@@ -91,7 +94,7 @@ export default () => (
 );
 ```
 
-### 🦄 Custom Types
+### 🦄 2.3 Custom Types
 By default, `react-use-logs` uses the existing [window.console](https://developer.mozilla.org/en-US/docs/Web/API/Window/console) export format, i.e:
 
 ```javascript
@@ -131,7 +134,7 @@ logs.ugly("");
 
 > **Notice** Similar to `middleware`, for a root-level `LogsProvider` a defined `levels` prop will override the original default levels. For nested providers, the contents of the `levels` will be _appended_ to the inherited ones.
 
-### 🤫 Filtering Logs
+### 2.4 🤫 Filtering Logs
 
 You can specify a `level` prop to a `LogsProvider` to declare the minimum actionable level, which obeys prioritized order. In the example below, it is only possible for `warn` and `error` events to be executed; all other invocations will be _ignored_.
 
@@ -159,7 +162,7 @@ export default () => (
 );
 ```
 
-#### 💢 Strict Mode
+#### 💢 2.4.1 Strict Mode
 
 By default, `LogsProvider`s operate in **Strict Mode**. This has the following effect:
   - A `disabled` `LogsProvider` will disable logging for **all** children in the tree.
@@ -182,5 +185,5 @@ Although deterministic, this is not useful for debugging. This is because it is 
 </>
 ```
 
-## ✌️ License
+## ✌️ 3.0 License
 [**MIT**](./LICENSE)
