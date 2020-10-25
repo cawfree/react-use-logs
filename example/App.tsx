@@ -25,10 +25,11 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.levels}>
         <Text style={styles.title}>Custom:</Text>
-        <Logs levels={["good", "bad", "ugly"]}>
+        <Logs levels={["good", "bad", "ugly"]} level="good">
           <Levels />
         </Logs>
       </View>
+
       <Logs>
         <View style={styles.levels}>
           <Text style={styles.title}>Defaults:</Text>
@@ -69,6 +70,22 @@ export default function App() {
           <Text style={styles.title}>Custom (Merged):</Text>
           <Logs levels={["good", "bad", "ugly"]}>
             <Levels />
+          </Logs>
+        </View>
+        <View style={styles.levels}>
+          <Text style={styles.title}>Disabled state inheritance:</Text>
+          <Logs disabled>
+            <Logs>
+              <Levels />
+            </Logs>
+          </Logs>
+        </View>
+        <View style={styles.levels}>
+          <Text style={styles.title}>Level inheritance:</Text>
+          <Logs level="warn">
+            <Logs level="trace">
+              <Levels />
+            </Logs>
           </Logs>
         </View>
       </Logs>

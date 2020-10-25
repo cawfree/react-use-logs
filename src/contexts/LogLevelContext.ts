@@ -1,7 +1,9 @@
 import { createContext } from 'react';
+
 import { LogLevelContext } from '.';
 
 import { LogLevel } from '../middleware';
+
 
 export type LogsMiddleware = (level: string, messages: unknown[], next: () => void) => unknown;
 

@@ -159,7 +159,5 @@ export default () => (
 );
 ```
 
-> **Note:** Both the parent's `level` and `disabled` state can be **overrided** by the child component. This helps easier debugging, as it helps isolate reporting to segments of the log tree.
-
 ## ✌️ License
 [**MIT**](./LICENSE)
