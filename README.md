@@ -57,7 +57,7 @@ export default () => (
 Once this is done, you can pass a custom `middleware` prop, which is an array that accepts [**Middleware**](./src/contexts/LogLevelContext.ts) functions which take the following form:
 
 ```javascript
-function someMiddleware(level: string, messages: string[], next: () => void) {
+function someMiddleware(level: string, messages: unknown[], next: () => void) {
   // Do something with the message.
   alert(...messages);
   // Allow the next middleware in the chain to execute:
