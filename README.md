@@ -2,15 +2,15 @@
 ⚛️ 🖨️ A hierarchy sensitive, middleware-defined `console.log` for [**React**](https://reactjs.org) and [**React Native**](https://reactnative.dev). ✨
 
 ### Table of Contents
-  - [1.0 Getting Started](#-getting-started)
-  - 2.0 Usage
-    - 2.1 Basic Example
-    - 2.2 Middleware
-      - 2.2.1 Nested Middleware
-    - 2.3 Custom Types
-    - 2.4 Filtering Logs
-      - 2.4.1 Strict Mode
-  - 3.0 License
+  - [**1.0 Getting Started**](#-getting-started)
+  - [**2.0 Usage**](#%EF%B8%8F-usage)
+    - [2.1 Basic Example](#-21-basic-example)
+    - [2.2 Middleware](#-22-middleware)
+      - [2.2.1 Nested Middleware](#-221-nested-middleware)
+    - [2.3 Custom Types](#-23-custom-types)
+    - [2.4 Filtering Logs](#24--filtering-logs)
+      - [2.4.1 Strict Mode](#-241-strict-mode)
+  - [**3.0 License**](#%EF%B8%8F-license)
 
 
 ### 🔥 Features
