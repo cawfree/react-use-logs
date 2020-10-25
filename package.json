@@ -1,6 +1,6 @@
 {
   "name": "react-use-logs",
-  "version": "0.0.1-alpha.0",
+  "version": "0.1.0-alpha.0",
   "description": "⚛️ 🖨️ A hierarchy sensitive, middleware-defined console.log for React and React Native. ✨",
   "main": "dist",
   "repository": "https://github.com/cawfree/react-use-logs",
