@@ -159,7 +159,47 @@ export default () => (
 );
 ```
 
-> **Note:** Sometimes it _is_ useful to receive logs from a particular child of silent JSX tree. To disable inheritence of filtering props, you can pass a `strict={false}` to a `LogsProvider` to disable this behavior for all child nodes. This will permit all child components to _override_ the configuration of their parents. The `strict` prop is **enabled** by default, and it is not recommended you disable it in production.
+#### Strict Mode
+
+By default, `LogsProvider`s operate in **Strict Mode**. This means the following:
+  - A `disabled` `LogsProvider` will disable logging for **all** children in the tree.
+  - The selected `level` of the `LogsProvider` will serve as the minimum log level for children.
+
+However, this is _not_ useful for debugging, because sometimes it is _useful_ to temporarily activate logging for select portion of a silenced log tree. To enable nested `LogProvider`s to override a parent's configuration, you can disable strict mode by passing a `strict={false}` prop.
+
+To demonstrate this functionality, see the following example. In the pane below, we see the normal behaviour:
+
+```javascript
+<>
+  <Logs disabled>
+    {/* because the parent is disabled, the provider cannot disable logging */}
+    <Logs disabled={false}>
+    </Logs>
+  </Logs>
+  <Logs level="warn">
+    {/* because the parent's minimum log level is higher, the provider cannot log lower-level messages */}
+    <Logs level="trace">
+    </Logs>
+  </Logs>
+</>
+```
+
+However, we can enable child trees to override parent behaviour by deactivating strict mode:
+
+```javascript
+<>
+  <Logs disabled strict={false}>
+    {/* because the parent is not strict, we can enable the child tree */}
+    <Logs disabled={false}>
+    </Logs>
+  </Logs>
+  <Logs level="warn">
+    {/* because the parent is not strict, we can log more granular information */}
+    <Logs level="trace">
+    </Logs>
+  </Logs>
+</>
+```
 
 ## ✌️ License
 [**MIT**](./LICENSE)
