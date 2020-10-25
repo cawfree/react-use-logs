@@ -1,0 +1,50 @@
+{
+  "name": "react-use-logs",
+  "version": "0.0.1-alpha.0",
+  "description": "⚛️ 🖨️ A hierarchy sensitive, middleware-defined console.log for React and React Native. ✨",
+  "main": "dist",
+  "repository": "https://github.com/cawfree/react-use-logs",
+  "author": "Alex Thomas (@cawfree) <hello@cawfree.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "rm -rf dist ; yarn ; babel src --plugins @babel/plugin-transform-typescript --extensions '.ts,.tsx' --out-dir dist ; rm -rf node_modules",
+    "prettify": "yarn prettier --write '**/*.tsx|**/*.ts'",
+    "lint": "eslint --fix --ext .ts,.tsx ./src",
+    "test": "jest"
+  },
+  "keywords": [
+    "logs",
+    "log",
+    "console",
+    "provider",
+    "debug",
+    "middleware",
+    "react",
+    "react-native"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
+    "@babel/preset-typescript": "^7.12.1",
+    "@types/react": "~16.9.49",
+    "@types/react-dom": "~16.9.8",
+    "@types/react-native": "~0.63.20",
+    "@babel/plugin-transform-typescript": "^7.12.1",
+    "husky": "^4.3.0",
+    "jest": "^26.6.1",
+    "leasot": "^11.3.0",
+    "prettier": "^2.1.2",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "typescript": "~3.8.3"
+  },
+  "dependencies": {
+    "deepmerge": "^4.2.2",
+    "loglevel": "^1.7.0",
+    "nanoid": "^3.1.15",
+    "use-deep-compare-effect": "^1.4.0"
+  }
+}

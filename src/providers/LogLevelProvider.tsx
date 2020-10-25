@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import deepmerge from 'deepmerge';
-import { nanoid } from 'nanoid/non-secure';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import deepmerge from "deepmerge";
+import { nanoid } from "nanoid/non-secure";
 
-import { LogLevelContext, LogsMiddleware } from '../contexts';
-import type { LogLevelContextProps } from '../contexts';
-import { useLogLevelContext } from '../hooks';
+import { LogLevelContext, LogsMiddleware } from "../contexts";
+import type { LogLevelContextProps } from "../contexts";
+import { useLogLevelContext } from "../hooks";
 
 export type LogLevelProviderProps = {
   children: JSX.Element | JSX.Element[];
@@ -37,7 +37,12 @@ function LogLevelProvider({
       )
     )
   ) as LogLevelContextProps;
-  const { levels: maybeDuplicates, parentId, middleware, ...extraValues } = value;
+  const {
+    levels: maybeDuplicates,
+    parentId,
+    middleware,
+    ...extraValues
+  } = value;
   const levels = maybeDuplicates.filter(
     (e, i, orig) => orig.indexOf(e) === i
   ) as string[];
@@ -48,8 +53,11 @@ function LogLevelProvider({
       value={{
         ...extraValues,
         parentId: id,
-        middleware: isTopLevel && Array.isArray(maybeMiddleware) ? maybeMiddleware : middleware,
-        levels: isTopLevel && Array.isArray(maybeLevels) ? maybeLevels: levels,
+        middleware:
+          isTopLevel && Array.isArray(maybeMiddleware)
+            ? maybeMiddleware
+            : middleware,
+        levels: isTopLevel && Array.isArray(maybeLevels) ? maybeLevels : levels,
       }}
     >
       {children}

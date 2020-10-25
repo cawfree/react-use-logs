@@ -1,15 +1,12 @@
 {
   "dependencies": {
-    "deepmerge": "^4.2.2",
     "expo": "~39.0.0",
-    "loglevel": "^1.7.0",
-    "nanoid": "^3.1.15",
     "react": "~16.13.0",
     "react-dom": "~16.13.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.2.tar.gz",
     "react-native-screens": "~2.10.1",
     "react-native-web": "0.13.13",
-    "use-deep-compare-effect": "^1.4.0"
+    "react-use-logs": "../"
   },
   "devDependencies": {
     "@babel/core": "7.9.0",
