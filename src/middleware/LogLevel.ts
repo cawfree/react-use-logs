@@ -3,7 +3,7 @@ import type { LogsMiddleware } from '../contexts';
 
 export default function LogLevel(level: string, messages: string[], next: () => unknown): void {
   if (typeof loglevel[level] === 'function') {
-    loglevel[level].apply(this, ...messages);
+    loglevel[level].call(this, ...messages);
   }
   next();
 }

@@ -4,7 +4,7 @@ import useDeepCompareEffect from 'use-deep-compare-effect';
 import { LogLevelContextProps, LogsMiddleware } from '../contexts';
 import { useLogLevelContext } from '.';
 
-const executeMiddlewareThunk = (middleware: LogsMiddleware[]) => async (level: string, ...messages: unknown[]) => {
+const executeMiddlewareThunk = (middleware: LogsMiddleware[]) => async (level: string, messages: unknown[]) => {
   for await (let layer of middleware) {
     const result = await new Promise(async (resolve) => {
       try { await layer(level, messages, resolve); } catch (e) { resolve(e); }
